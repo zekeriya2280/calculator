@@ -21,6 +21,14 @@ class Calculator(Widget):
         if self.ids.calc_input.text == "0":
             self.ids.calc_input.text = ""
         self.ids.calc_input.text += x
+    def dot(self,x):
+        if "." in self.ids.calc_input.text:
+            pass
+        else:
+            if self.ids.calc_input.text == "0":
+                self.ids.calc_input.text = ""
+            self.ids.calc_input.text += x
+        
     def sum(self,x):
         if self.ids.calc_input.text == "0":
             self.ids.calc_input.text = ""
