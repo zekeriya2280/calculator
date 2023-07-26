@@ -73,21 +73,26 @@ class Calculator(Widget):
                 
                 self.ids.calc_input.text = str(ans)
         elif "-" in last:
-            dob_list = []
-            dob = 0.0
+            #dob_list = []
+            #dob = 0.0
+            ans=0
             num_list = last.split("-")
+            if num_list[0]=='':
+                num_list.pop(0)
+                num_list[0] = str(int(num_list[0]) * (-1))
             for nums in num_list:
                 if "." in nums:
-                    nos = nums.split(".")
-                    dob0 = (int(nos[0])*len(nos[1])*10+int(nos[1]))/len(nos[1])
-                    if nos[1] != "0":
-                        dob_list.append(dob0)
-                    else:
-                        nums = math.float(float(nums))
+                    ans=0.0
+                   # nos = nums.split(".")
+                   # dob0 = (int(nos[0])*len(nos[1])*10+int(nos[1]))/len(nos[1])
+                   # if nos[1] != "0":
+                   #     dob_list.append(dob0)
+                   # else:
+                   #     nums = math.float(float(nums))
             #print(num_list)
-            for dobs in dob_list:
-                dob += dobs
-            if dob_list == []:
+            #for dobs in dob_list:
+            #    dob += dobs
+            if ans==0:
                 ans = int(num_list[0])
                 for n in num_list:
                     if n != num_list[0]:
@@ -100,7 +105,7 @@ class Calculator(Widget):
                     if n != num_list[0]:
                         print(float(num_list[0])-float(n))
                         ans -= float(n)
-                self.ids.calc_input.text = str(math.ceil(ans))
+                self.ids.calc_input.text = str(ans)
 
 class MyApp(App):
     def build(self):
